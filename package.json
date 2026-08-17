@@ -6,12 +6,11 @@
   "author": "guohongbo@outlook.com",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ghbhiee/dsh-plugins.git",
-    "directory": "packages/cli-session"
+    "url": "git+https://github.com/ghbhiee/dsh-plugin-cli-session.git"
   },
-  "homepage": "https://github.com/ghbhiee/dsh-plugins/tree/main/packages/cli-session#readme",
+  "homepage": "https://github.com/ghbhiee/dsh-plugin-cli-session#readme",
   "bugs": {
-    "url": "https://github.com/ghbhiee/dsh-plugins/issues"
+    "url": "https://github.com/ghbhiee/dsh-plugin-cli-session/issues"
   },
   "type": "module",
   "main": "lib/index.js",

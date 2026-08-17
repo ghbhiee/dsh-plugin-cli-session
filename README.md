@@ -10,29 +10,29 @@ Not on npm yet. The built `lib/` is committed, so it installs straight from
 GitHub — no download, no build step:
 
 ```sh
-# From the standalone repo (recommended)
 dsh plugin --profile chat add github:ghbhiee/dsh-plugin-cli-session
-
-# ...or from the monorepo
-dsh plugin --profile chat add "github:ghbhiee/dsh-plugins#path:packages/cli-session"
 ```
 
-Or from a [release](https://github.com/ghbhiee/dsh-plugins/releases) tarball
-(download it first — passing the URL to `dsh plugin add` trips a pnpm integrity
-check) or a local clone:
+Or from a local clone (a `link:`, so a local rebuild is picked up):
 
 ```sh
-# From a release tarball
-curl -LO https://github.com/ghbhiee/dsh-plugins/releases/download/v0.1.0/dsh-plugin-cli-session-0.1.0.tgz
-dsh plugin --profile chat add ./dsh-plugin-cli-session-0.1.0.tgz
-
-# ...or from a clone
-dsh plugin --profile chat add ./packages/cli-session
+git clone https://github.com/ghbhiee/dsh-plugin-cli-session.git
+dsh plugin --profile chat add ./dsh-plugin-cli-session
 ```
 
-The bundle disables `headless-startup` / `headless-runner` and inserts `cli-startup` / `cli-runner` in their place.
+Sibling plugins install the same way: [dsh-plugin-workbench](https://github.com/ghbhiee/dsh-plugin-workbench),
+[dsh-plugin-mobile-shell](https://github.com/ghbhiee/dsh-plugin-mobile-shell),
+[dsh-plugin-cli-session](https://github.com/ghbhiee/dsh-plugin-cli-session).
 
-> **Install it in a headless-style profile only.** The runner owns the profile's entire command line. Added to the `web` profile it parses `dsh web`'s own flags and rejects them — `error: unknown option '--host'` — which is why the error now names this plugin. Everything else in the headless bundle — toolchain, persistence, sandbox — is inherited untouched.
+## Develop
+
+```sh
+pnpm install
+pnpm run check   # typecheck → vitest → tsdown build
+```
+
+Because `lib/` is versioned (it is what a git install serves), rebuild and
+commit it with every source change.
 
 ## Two flavours, one plugin
 
